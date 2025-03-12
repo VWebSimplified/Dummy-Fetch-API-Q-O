@@ -28,7 +28,7 @@ public class QuestionService {
        return convertToDtoList(questionsList);
     }
     public    List<QuestionsDto>   getQuestionByCategory(String category){
-           List<Questions>  questionsByCategory =  questionRepository.findByQuestionByCategory(category);
+           List<Questions>  questionsByCategory =  questionRepository.findByQuestionCategory(category);
            return convertToDtoList(questionsByCategory);
     }
 
@@ -50,11 +50,12 @@ public class QuestionService {
                      optionsDto.setOptionValue(option.getOptionValue());
                      optionsDto.setOptionType(option.getOptionType());
                      optionsDto.setScore(option.getScore());
+                     optionsDto.setQuesId(option.getQuestion().getId().longValue());
 
                      // We Will check if Option has Nested question, if yes then we will fetch it
                      if(option.getNestedQuesId()!=null){
                          for( Questions   nestedQuestion: questionsList){
-                             if(nestedQuestion.getId().equals(option.getNestedQuesId().longValue())){
+                             if(nestedQuestion.getId().equals(option.getNestedQuesId())){
                                  QuestionsDto nestedDto = new QuestionsDto();
                                  nestedDto.setId(nestedQuestion.getId());
                                  nestedDto.setQuestionNo(nestedQuestion.getQuestionNo());

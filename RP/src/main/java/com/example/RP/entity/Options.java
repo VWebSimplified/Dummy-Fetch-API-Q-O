@@ -34,4 +34,52 @@ public class Options {
 
     @Column(name = "nested_ques_id")
     private Integer nestedQuesId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getOptionValue() {
+        return optionValue;
+    }
+
+    public void setOptionValue(String optionValue) {
+        this.optionValue = optionValue;
+    }
+
+    public Questions getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Questions question) {
+        this.question = question;
+    }
+
+    public String getOptionType() {
+        return optionType;
+    }
+
+    public void setOptionType(String optionType) {
+        this.optionType = optionType;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getNestedQuesId() {
+        return nestedQuesId;
+    }
+
+    public void setNestedQuesId(Integer nestedQuesId) {
+        this.nestedQuesId = nestedQuesId;
+    }
 }

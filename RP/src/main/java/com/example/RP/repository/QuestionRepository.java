@@ -8,7 +8,8 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Questions, Long> {
-    List<Questions> findByQuestionByCategory(String category);
+    List<Questions> findByQuestionCategory(String questionCategory);
 
 
 }
+
