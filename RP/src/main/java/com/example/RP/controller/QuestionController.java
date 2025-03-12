@@ -1,6 +1,7 @@
 package com.example.RP.controller;
 
 
+import com.example.RP.dto.QuestionsDto;
 import com.example.RP.entity.Questions;
 import com.example.RP.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,22 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/questions")
 public class QuestionController {
 
-
+    @Autowired
     private final QuestionService questionService;
 
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
 
-    @GetMapping("/questions")
-    public ResponseEntity<List<Questions>> getQuestions(@RequestParam(value = "category", required = false) String category){
-        return ResponseEntity.ok(questionService.getAllQuestions(category));
+
+    @GetMapping
+    public List<QuestionsDto> getAllQuestions() {
+        return questionService.getAllQuestions();
     }
 
 
+    @GetMapping(params = "category")
+    public List<QuestionsDto> getQuestionsByCategory(@RequestParam String category) {
+        return questionService.getQuestionByCategory(category);
+    }
 
 
 }
